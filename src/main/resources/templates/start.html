@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="start"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet"></link>
+</head>
+<body>
+<div class="container mx-auto flex justify-content-center my-5" style="width:600px">
+    <div class="row">
+        <div class="col-12 pt-3">
+            <img src="/images/UBS-Logo.png" width="100px" alt="UBS Logo">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 pt-3">
+            <img src="/images/Withdraw-Money.png" width="90px" alt="withdraw money icon">
+            <form action="#" th:action="@{/start}"
+                  th:object="${karte}" method="post" class="pt-3">
+                <div class="form-group">
+                    <label for="cardNumber">Bitte geben Sie Ihre Kartennummer ein :</label>
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" class="form-control" id="cardNumber" th:field="*{nummer}"/>
+                        </div>
+                        <div class="col-6">
+                            <input type="submit" class="btn btn-success" value="Bestätigen"/>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>Bargelbezüge in</p>
+            <p>
+                <strong>CHF</strong>
+                <span class="pl-1">50</span>
+                <span class="pl-1">100</span>
+                <span class="pl-1">200</span>
+            </p>
+            <p>
+                <strong>EUR</strong>
+                <span class="pl-1">50</span>
+                <span class="pl-1">100</span>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 pt-1">
+            <p>Akzeptierte Karten</p>
+            <img src="/images/Accepted-Cards.png" width="250px" alt="accepted cards icon">
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
