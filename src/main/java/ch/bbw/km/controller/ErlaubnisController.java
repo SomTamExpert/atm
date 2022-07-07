@@ -44,16 +44,19 @@ public class ErlaubnisController {
     }
     @PostMapping("/enterpin")
     public String verifyCustomer(@ModelAttribute Karte karte, @ModelAttribute Kunde kunde,  Model model) {
+        System.out.println("karten nummer" + karte.getNummer());
         Karte card = karteRepository.findKarteByNummer(karte.getNummer());
-        if (karte.getPin() == card.getPin()) {
-            model.addAttribute("karte", karte);
-            Konto konto = kontoRepository.findKontoByKarte(karte);
-            model.addAttribute("kunde", konto.getKunde());
-            return "homemenu";
-        } else {
-            model.addAttribute("karte", karte);
-            return "falsepin";
-        }
+        System.out.println("card number" + card.getNummer());
+//        if (karte.getPin() == card.getPin()) {
+//            model.addAttribute("karte", karte);
+//            Konto konto = kontoRepository.findKontoByKarte(karte);
+//            model.addAttribute("kunde", konto.getKunde());
+//            return "homemenu";
+//        } else {
+//            model.addAttribute("karte", karte);
+//            return "falsepin";
+//        }
+        return "homemenu";
     }
 
 

@@ -2,13 +2,47 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="enterpin"></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
           rel="stylesheet"></link>
 </head>
 <body>
-<h1>enterpin</h1>
-<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="webjars/jquery/3.3.1-2/jquery.min.js"></script>
+<div class="container mx-auto flex justify-content-center my-5" style="width:600px">
+    <div class="row">
+        <div class="col-12 pt-3">
+            <img src="/images/UBS-Logo.png" width="100px" alt="UBS Logo">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 pt-3">
+            <img src="/images/Withdraw-Money.png" width="90px" alt="withdraw money icon">
+            <form action="#" th:action="@{/enterpin}"
+                  th:object="${karte}" method="post" class="pt-3">
+                <div class="form-group">
+                    <label for="pin">Bitte PIN geschützt eingeben und bestätigen</label>
+                    <div class="row">
+                        <div class="col-6">
+                            PIN:<input type="text" class="form-control" id="pin" th:field="*{pin}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 pt-3">
+                        <img src="/images/Enter-PIN.png" width="200px" alt="enter pin icon">
+                    </div>
+                </div>
+                <div class="row pt-5">
+                    <div class="col-6">
+                        <input type="submit" class="btn btn-warning" value="Korrigieren"/>
+                    </div>
+                    <div class="col-6">
+                        <input type="submit" class="btn btn-success" value="Bestätigen"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
+
 </html>
