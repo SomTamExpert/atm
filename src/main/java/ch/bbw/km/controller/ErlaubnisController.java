@@ -87,15 +87,14 @@ public class ErlaubnisController {
         System.out.println("karten nummer " + karte.toString());
         Karte card = karteRepository.findKarteByNummer(karte.getNummer());
         System.out.println("card number" + card.getNummer());
-        try {
             if (karte.getPin() == card.getPin()) {
                 model.addAttribute("karte", karte);
                 Konto konto = kontoRepository.findKontoByKarte(card);
                 model.addAttribute("kunde", konto.getKunde());
-            } return "homemenu";
-            } catch (Exception err) {
+             return "homemenu";
+            } else {
                 model.addAttribute("karte", karte);
-                System.out.println(err);
+
                 return "falsepin";
         }
     }
