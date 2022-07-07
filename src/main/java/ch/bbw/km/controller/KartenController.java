@@ -16,20 +16,26 @@ public class KartenController {
     @Autowired
     KarteRepository karteRepository;
     @Autowired
+    KundeRepository kundeRepository;
+    @Autowired
+    KontoRepository kontoRepository;
+    @Autowired
     Karte karte = new Karte();
 
     @GetMapping("/changepin")
-    public String newPin(@ModelAttribute Karte karte, Model model) {
-        karte = karteRepository.findKarteByNummer(karte.getNummer());
+    public String newPin(Model model) {
         model.addAttribute("karte", karte);
         return "changepin";
     }
+
+    //add mapping to update pin
     @PostMapping("/changepin")
-    public String changePin(@ModelAttribute Karte karte, Model model) {
-        karte = karteRepository.findKarteByNummer(karte.getNummer());
+    public String updatePin(@ModelAttribute Karte karte, Model model) {
+        karteRepository.save(karte);
         model.addAttribute("karte", karte);
-        return "confirmpin";
+        return "changepin";
     }
+
     @PostMapping("/confirmpin")
     public String confirmPin(@ModelAttribute Karte karte, Model model) {
         karte = karteRepository.findKarteByNummer(karte.getNummer());
