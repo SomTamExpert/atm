@@ -59,6 +59,21 @@ public class ErlaubnisController {
             return "falsepin";
         }
     }
+    @PostMapping("/falsepin")
+    public String verifyCustomerAgain(@ModelAttribute Karte karte, @ModelAttribute Kunde kunde, Model model) {
+        System.out.println("karten nummer " + karte.toString());
+        Karte card = karteRepository.findKarteByNummer(karte.getNummer());
+        System.out.println("card number" + card.getNummer());
+        if (karte.getPin() == card.getPin()) {
+            model.addAttribute("karte", karte);
+            Konto konto = kontoRepository.findKontoByKarte(card);
+            model.addAttribute("kunde", konto.getKunde());
+            return "homemenu";
+        } else {
+            model.addAttribute("karte", karte);
+            return "falsepin";
+        }
+    }
 }
 
 
