@@ -19,7 +19,8 @@
             <form action="#" th:action="@{/falsecardnummber}"
                   th:object="${karte}" method="post" class="pt-3">
                 <div class="form-group">
-                    <label for="cardNumber">Bitte geben Sie Ihre Kartennummer ein :</label>
+                    <label for="cardNumber" style="color: red">Ihre Kartennummer ist falsch. Bitte geben Sie Ihre Kartennummer korrekt ein!</label>
+                    <label for="cardNumber"> Bitte geben Sie Ihre Kartennummer korrekt ein :</label>
                     <div class="row">
                         <div class="col-6">
                             <input type="text" class="form-control" id="cardNumber" th:field="*{nummer}"/>
