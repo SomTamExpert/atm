@@ -51,6 +51,20 @@ public class ErlaubnisController {
             return "falsecardnummber";
         }
     }
+    @PostMapping("/falsecardnummber")
+    public String verifyCardNumber(@ModelAttribute Karte karte, @ModelAttribute Kunde kunde, Model model) {
+        Karte card = karteRepository.findKarteByNummer(karte.getNummer());
+        try {
+            if (karte.getNummer() == card.getNummer()) {
+                model.addAttribute("karte", karte);
+            }
+            return "enterpin";
+        } catch (Exception err) {
+            model.addAttribute("karte", karte);
+            System.out.println(err);
+            return "falsecardnummber";
+        }
+    }
 
     @PostMapping("/enterpin")
     public String verifyCustomer(@ModelAttribute Karte karte, @ModelAttribute Kunde kunde, Model model) {
