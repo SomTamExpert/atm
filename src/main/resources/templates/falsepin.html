@@ -19,7 +19,8 @@
             <form action="#" th:action="@{/falsepin}"
                   th:object="${karte}" method="post" class="pt-3">
                 <div class="form-group">
-                    <label for="pin">Ihr PIN ist falsch. Sie haben noch 2 Versuche </label>
+                    <label for="pin" style="color: red">Ihr PIN ist falsch.</label>
+                    <label for="pin"> Sie haben noch 2 Versuche </label>
                     <div class="row">
                         <div class="col-6">
                             PIN:<input type="text" class="form-control" id="pin" th:field="*{pin}"/>
@@ -41,7 +42,8 @@
                 </div>
                 <div class="row pt-5">
                     <div class="col-6">
-                        <input type="submit" class="btn btn-warning" value="Korrigieren"/>
+                        <button class="btn btn-warning" onclick="document.getElementById('pin').value = ''">Korrigieren</button>
+
                     </div>
                     <div class="col-6">
                         <input type="submit" class="btn btn-success" value="Bestätigen"/>
