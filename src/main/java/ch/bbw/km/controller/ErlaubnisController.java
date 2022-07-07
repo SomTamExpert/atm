@@ -38,10 +38,18 @@ public class ErlaubnisController {
     }
 
     @PostMapping("/start")
-    public String start(@ModelAttribute Karte karte, Model model) {
-        karte = karteRepository.findKarteByNummer(karte.getNummer());
-        model.addAttribute("karte", karte);
-        return "enterpin";
+    public String start(@ModelAttribute Karte karte, @ModelAttribute Kunde kunde, Model model) {
+        Karte card = karteRepository.findKarteByNummer(karte.getNummer());
+        try {
+            if (karte.getNummer() == card.getNummer()) {
+                model.addAttribute("karte", karte);
+            }
+            return "enterpin";
+        } catch (Exception err) {
+            model.addAttribute("karte", karte);
+            System.out.println(err);
+            return "falsecardnummber";
+        }
     }
 
     @PostMapping("/enterpin")
@@ -59,6 +67,7 @@ public class ErlaubnisController {
             return "falsepin";
         }
     }
+
     @PostMapping("/falsepin")
     public String verifyCustomerAgain(@ModelAttribute Karte karte, @ModelAttribute Kunde kunde, Model model) {
         System.out.println("karten nummer " + karte.toString());
