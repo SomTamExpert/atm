@@ -1,9 +1,11 @@
 package ch.bbw.km.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 @Entity
 @Table(name = "Konto")
 public class Konto {
@@ -22,6 +24,7 @@ public class Konto {
     private List<Transaktion> transaktionen = new ArrayList<>();
     @ManyToOne(fetch = FetchType.LAZY)
     private Karte karte;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Kunde kunde;
 

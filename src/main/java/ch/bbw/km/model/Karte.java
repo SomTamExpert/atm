@@ -1,5 +1,8 @@
 package ch.bbw.km.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -7,17 +10,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+
 @Entity
 @Table(name = "Karte")
+@Component
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Karte {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(name = "pin")
-    private int pin;
+    private String pin;
     @Column(name = "nummer")
-    private int nummer;
+    private String nummer;
     @Column(name = "typ")
     private String typ;
     @Column(name = "gueligkeitsdatum")
@@ -29,36 +34,31 @@ public class Karte {
 
     public Karte() {
     }
-
-    public Karte(int pin, int nummer, String typ, LocalDate gueligkeitsdatum, int cvc, List<Konto> kontos) {
+    public Karte(String pin, String nummer, String typ, LocalDate gueligkeitsdatum, int cvc) {
         this.pin = pin;
         this.nummer = nummer;
         this.typ = typ;
         this.gueligkeitsdatum = gueligkeitsdatum;
         this.cvc = cvc;
-        this.kontos = kontos;
     }
-
-    public void pinSetzen(){}
-    public void pinZurueckgeben(){}
 
     public long getId() {
         return id;
     }
 
-    public int getPin() {
+    public String getPin() {
         return pin;
     }
 
-    public void setPin(int pin) {
+    public void setPin(String pin) {
         this.pin = pin;
     }
 
-    public int getNummer() {
+    public String getNummer() {
         return nummer;
     }
 
-    public void setNummer(int nummer) {
+    public void setNummer(String nummer) {
         this.nummer = nummer;
     }
 

@@ -1,7 +1,9 @@
 package ch.bbw.km.model;
 
-import javax.persistence.*;
+import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
+@Component
 @Entity
 @Table(name = "Erlaubnis")
 public class Erlaubnis {

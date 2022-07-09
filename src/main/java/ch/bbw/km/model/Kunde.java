@@ -1,9 +1,12 @@
 package ch.bbw.km.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 @Entity
 @Table(name = "Kunde")
 public class Kunde {

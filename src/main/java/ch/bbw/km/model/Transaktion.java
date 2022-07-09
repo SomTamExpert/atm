@@ -1,8 +1,10 @@
 package ch.bbw.km.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
-
+@Component
 @Entity
 @Table(name = "Transaktion")
 public class Transaktion {
