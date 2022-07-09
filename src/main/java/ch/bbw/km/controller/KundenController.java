@@ -29,16 +29,24 @@ public class KundenController {
 
     @PostMapping("/register")
     public String registerNewCustomer(Model model, @ModelAttribute Kunde kunde) {
+        Karte neueKarte = new Karte();
        double saldoNum = Math.floor(1000 + Math.random() * 9000);
         Random rnd = new Random();
         int accNum = rnd.nextInt(999999999);
         String.format("%06d", accNum);
-        Konto konto = new Konto("Sparkonto",accNum, saldoNum, new ArrayList<>() );
+        Konto konto = new Konto();
+        konto.setNummer(accNum);
+        konto.setSaldo(saldoNum);
         String pin = String.format("%04d", rnd.nextInt(10000));
         String num = String.format("%08d", rnd.nextInt(50000));
         String cvc = String.format("%03d", rnd.nextInt(50000));
         Integer.parseInt(cvc);
-        Karte karte = new Karte(pin,num,"Master",new Date(), Integer.parseInt(cvc));
+        Karte karte = new Karte();
+        karte.setPin(pin);
+        karte.setNummer(num);
+        karte.setTyp("Master");
+        karte.setGueligkeitsdatum(new Date());
+        karte.setCvc(Integer.parseInt(cvc));
         neuKunde.setAlter(kunde.getAlter());
         neuKunde.setKarte(karte);
         neuKunde.setEmail(kunde.getEmail());
@@ -50,6 +58,7 @@ public class KundenController {
         neuKunde.setPlz(kunde.getPlz());
         neuKunde.setTelefonnummer(kunde.getTelefonnummer());
         model.addAttribute("kunde", neuKunde);
+        model.addAttribute("karte", neueKarte);
         System.out.println("registerNewCustomer" +" "+ neuKunde.toString());
         return "login";
     }

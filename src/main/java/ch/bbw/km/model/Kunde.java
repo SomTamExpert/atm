@@ -17,20 +17,6 @@ public class Kunde {
     private Konto konto;
     private Karte karte;
 
-    public Kunde(String vorname, String nachname, int alter, String strasseNummer, int plz, String land, String ort, String telefonnummer, String email, Konto konto, Karte karte) {
-        this.vorname = vorname;
-        this.nachname = nachname;
-        this.alter = alter;
-        this.strasseNummer = strasseNummer;
-        this.plz = plz;
-        this.land = land;
-        this.ort = ort;
-        this.telefonnummer = telefonnummer;
-        this.email = email;
-        this.konto = konto;
-        this.karte = karte;
-    }
-
     public String getVorname() {
         return vorname;
     }

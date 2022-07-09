@@ -14,7 +14,6 @@ public class Konto {
     private double saldo;
     private List<Transaktion> transaktionen = new ArrayList<>();
 
-
     public void saldoSetzen() {
     }
 
@@ -22,14 +21,6 @@ public class Konto {
     }
 
     public void transaktionenAnzeigen() {
-    }
-
-
-    public Konto(String typ, int nummer, double saldo, List<Transaktion> transaktionen) {
-        this.typ = typ;
-        this.nummer = nummer;
-        this.saldo = saldo;
-        this.transaktionen = transaktionen;
     }
 
     public int getNummer() {
@@ -55,7 +46,6 @@ public class Konto {
     public void setTransaktionen(List<Transaktion> transaktionen) {
         this.transaktionen = transaktionen;
     }
-
 
     @Override
     public String toString() {

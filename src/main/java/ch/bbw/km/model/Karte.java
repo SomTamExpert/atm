@@ -2,10 +2,8 @@ package ch.bbw.km.model;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -20,14 +18,6 @@ public class Karte {
     private Date gueligkeitsdatum;
     private int cvc;
 
-
-    public Karte(String pin, String nummer, String typ, Date gueligkeitsdatum, int cvc) {
-        this.pin = pin;
-        this.nummer = nummer;
-        this.typ = typ;
-        this.gueligkeitsdatum = gueligkeitsdatum;
-        this.cvc = cvc;
-    }
 
     public String getPin() {
         return pin;

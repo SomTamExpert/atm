@@ -8,23 +8,12 @@ import java.util.List;
 @Service
 public class Bank {
 
-
     private String name;
     private String adresse;
     private int telefonnumer;
     private String bankleitzahl;
     public List<Kunde> kunden = new ArrayList<>(
     );
-    public Bank() {
-    }
-
-    public Bank(String name, String adresse, int telefonnumer, String bankleitzahl, List<Kunde> kunden) {
-        this.name = name;
-        this.adresse = adresse;
-        this.telefonnumer = telefonnumer;
-        this.bankleitzahl = bankleitzahl;
-        this.kunden = kunden;
-    }
 
     public String getName() {
         return name;

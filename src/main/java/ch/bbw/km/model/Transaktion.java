@@ -17,13 +17,6 @@ public class Transaktion {
     public Transaktion() {
     }
 
-    public Transaktion(LocalDateTime zeitpunkt, double betrag, String waehrung, String transtyp) {
-        this.zeitpunkt = zeitpunkt;
-        this.betrag = betrag;
-        this.waehrung = waehrung;
-        this.transtyp = transtyp;
-    }
-
     public LocalDateTime getZeitpunkt() {
         return zeitpunkt;
     }
