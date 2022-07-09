@@ -2,14 +2,12 @@ package ch.bbw.km.controller;
 
 import ch.bbw.km.model.Karte;
 import ch.bbw.km.model.Kunde;
-import ch.bbw.km.repository.KarteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 
 /**
@@ -21,21 +19,21 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 public class ErlaubnisController {
-    @Autowired
-    KarteRepository karteRepository;
+
     @Autowired
     Karte kundenkarte;
 
     String newPin = "";
 
-    @GetMapping("/")
-    public String start(Model model, @ModelAttribute Karte karte) {
+    @GetMapping(value={"/", "/login"})
+    public String login(Model model, @ModelAttribute Karte karte) {
         model.addAttribute("karte", karte);
-        return "start";
+        return "login";
     }
 
-    @PostMapping("/start")
-    public String start(@ModelAttribute Karte karte, @ModelAttribute Kunde kunde, Model model) {
+/*
+    @PostMapping("/login")
+    public String login(@ModelAttribute Karte karte, @ModelAttribute Kunde kunde, Model model) {
         try {
             kundenkarte = karteRepository.findKarteByNummer(karte.getNummer());
             System.out.println("post start kundenkarte nummer: " + kundenkarte.getNummer());
@@ -177,6 +175,7 @@ public class ErlaubnisController {
         return "pinchanged";
     }
 
+*/
 
 }
 

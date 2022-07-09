@@ -1,9 +1,7 @@
 package ch.bbw.km.controller;
 
 import ch.bbw.km.model.Karte;
-import ch.bbw.km.repository.KarteRepository;
-import ch.bbw.km.repository.KontoRepository;
-import ch.bbw.km.repository.KundeRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +15,6 @@ import java.util.Optional;
 @Controller
 public class KartenController {
 
-    @Autowired
-    KarteRepository karteRepository;
     @Autowired
     Karte kundenkarte;
 

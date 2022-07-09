@@ -2,32 +2,17 @@ package ch.bbw.km.model;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
-@Entity
-@Table(name = "Konto")
+
 public class Konto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    @Enumerated(EnumType.STRING)
-    private Typ typ;
-    @Column(name = "iban")
-    private String iban;
-    @Column(name = "nummer")
+
+    private String typ;
     private int nummer;
-    @Column(name = "saldo")
     private double saldo;
-    @OneToMany(mappedBy = "gutschriftskonto", cascade = CascadeType.ALL)
     private List<Transaktion> transaktionen = new ArrayList<>();
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Karte karte;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Kunde kunde;
-
 
 
     public void saldoSetzen() {
@@ -39,28 +24,12 @@ public class Konto {
     public void transaktionenAnzeigen() {
     }
 
-    public Konto() {
-    }
 
-    public Konto(String iban, int nummer, double saldo, List<Transaktion> transaktionen, Karte karte, Kunde kunde) {
-        this.iban = iban;
+    public Konto(String typ, int nummer, double saldo, List<Transaktion> transaktionen) {
+        this.typ = typ;
         this.nummer = nummer;
         this.saldo = saldo;
         this.transaktionen = transaktionen;
-        this.karte = karte;
-        this.kunde = kunde;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getIban() {
-        return iban;
-    }
-
-    public void setIban(String iban) {
-        this.iban = iban;
     }
 
     public int getNummer() {
@@ -87,30 +56,13 @@ public class Konto {
         this.transaktionen = transaktionen;
     }
 
-    public Karte getKarte() {
-        return karte;
-    }
-
-    public void setKarte(Karte karte) {
-        this.karte = karte;
-    }
-    public Kunde getKunde() {
-        return kunde;
-    }
-    public void setKunde(Kunde kunde) {
-        this.kunde = kunde;
-    }
 
     @Override
     public String toString() {
         return "Konto{" +
-                "id=" + id +
-                ", iban='" + iban + '\'' +
                 ", nummer=" + nummer +
                 ", saldo=" + saldo +
                 ", transaktionen=" + transaktionen +
-                ", karte=" + karte +
-                ", kunde=" + kunde +
                 '}';
     }
 }

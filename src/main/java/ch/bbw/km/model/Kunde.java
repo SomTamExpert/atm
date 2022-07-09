@@ -1,66 +1,34 @@
 package ch.bbw.km.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 @Component
-@Entity
-@Table(name = "Kunde")
 public class Kunde {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    @Column(name = "vorname")
+
     private String vorname;
-    @Column(name = "nachname")
     private String nachname;
-    @Column(name = "stasseNummer")
-    private String stasseNummer;
-    @Column(name = "plz")
+    private int alter;
+    private String strasseNummer;
     private int plz;
-    @Column(name = "land")
     private String land;
-    @Column(name = "telefonnummer")
+    private String ort;
     private String telefonnummer;
-    @Column(name = "email")
     private String email;
-    @OneToMany(mappedBy = "kunde", cascade = CascadeType.ALL)
-    private List<Konto> kontos = new ArrayList<>();
+    private Konto konto;
+    private Karte karte;
 
-    public Kunde() {
-    }
-
-    public Kunde(String vorname, String nachname, String stasseNummer, int plz, String land, String telefonnummer, String email, List<Konto> kontos) {
+    public Kunde(String vorname, String nachname, int alter, String strasseNummer, int plz, String land, String ort, String telefonnummer, String email, Konto konto, Karte karte) {
         this.vorname = vorname;
         this.nachname = nachname;
-        this.stasseNummer = stasseNummer;
+        this.alter = alter;
+        this.strasseNummer = strasseNummer;
         this.plz = plz;
         this.land = land;
+        this.ort = ort;
         this.telefonnummer = telefonnummer;
         this.email = email;
-        this.kontos = kontos;
-    }
-
-    public void kontoAuswaehlen(){}
-    public void kontoInfoAnzeigen(){}
-    public void pinAendern(){}
-    public void bezugInEuro(){}
-    public void bezugInCHF(){}
-    public void korrigieren(){}
-    public void bestaetigen(){}
-    public void abbrechen(){}
-    public void betragEingeben(){}
-    public void belegDrucken(){}
-    public void kontoAendern(){}
-    public void kontoEroeffnen(){}
-    public void transaktionStarten(){}
-    public void letztetansaktionenAnzeigen(){}
-
-    public long getId() {
-        return id;
+        this.konto = konto;
+        this.karte = karte;
     }
 
     public String getVorname() {
@@ -79,12 +47,20 @@ public class Kunde {
         this.nachname = nachname;
     }
 
-    public String getStasseNummer() {
-        return stasseNummer;
+    public int getAlter() {
+        return alter;
     }
 
-    public void setStasseNummer(String stasseNummer) {
-        this.stasseNummer = stasseNummer;
+    public void setAlter(int alter) {
+        this.alter = alter;
+    }
+
+    public String getStrasseNummer() {
+        return strasseNummer;
+    }
+
+    public void setStrasseNummer(String strasseNummer) {
+        this.strasseNummer = strasseNummer;
     }
 
     public int getPlz() {
@@ -103,6 +79,14 @@ public class Kunde {
         this.land = land;
     }
 
+    public String getOrt() {
+        return ort;
+    }
+
+    public void setOrt(String ort) {
+        this.ort = ort;
+    }
+
     public String getTelefonnummer() {
         return telefonnummer;
     }
@@ -119,26 +103,36 @@ public class Kunde {
         this.email = email;
     }
 
-    public List<Konto> getKontos() {
-        return kontos;
+    public Konto getKonto() {
+        return konto;
     }
 
-    public void setKontos(List<Konto> kontos) {
-        this.kontos = kontos;
+    public void setKonto(Konto konto) {
+        this.konto = konto;
+    }
+
+    public Karte getKarte() {
+        return karte;
+    }
+
+    public void setKarte(Karte karte) {
+        this.karte = karte;
     }
 
     @Override
     public String toString() {
         return "Kunde{" +
-                "id=" + id +
-                ", vorname='" + vorname + '\'' +
+                "vorname='" + vorname + '\'' +
                 ", nachname='" + nachname + '\'' +
-                ", stasseNummer='" + stasseNummer + '\'' +
+                ", alter=" + alter +
+                ", strasseNummer='" + strasseNummer + '\'' +
                 ", plz=" + plz +
                 ", land='" + land + '\'' +
+                ", ort='" + ort + '\'' +
                 ", telefonnummer='" + telefonnummer + '\'' +
                 ", email='" + email + '\'' +
-                ", kontos=" + kontos +
+                ", konto=" + konto +
+                ", karte=" + karte +
                 '}';
     }
 }
