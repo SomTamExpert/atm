@@ -5,10 +5,12 @@ import ch.bbw.km.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.Random;
 
@@ -29,11 +31,19 @@ public class KundenController {
         System.out.println(mySessionCounter);
         model.addAttribute("surveys", myApplicationCounter);
         model.addAttribute("kunde", neuKunde);
+
         return "register";
     }
 
     @PostMapping("/register")
-    public String registerNewCustomer(Model model, @ModelAttribute Kunde kunde) {
+    public String registerNewCustomer(Model model, @Valid @ModelAttribute("kunde") Kunde kunde, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            System.out.println(mySessionCounter);
+            model.addAttribute("surveys", myApplicationCounter);
+            System.out.println("Fehler");
+            return "register";
+        }
         Karte neueKarte = new Karte();
         double saldoNum = Math.floor(1000 + Math.random() * 9000);
         Random rnd = new Random();
@@ -52,7 +62,6 @@ public class KundenController {
         karte.setTyp("Master");
         karte.setGueligkeitsdatum(new Date());
         karte.setCvc(Integer.parseInt(cvc));
-        neuKunde.setAlter(kunde.getAlter());
         neuKunde.setKarte(karte);
         neuKunde.setEmail(kunde.getEmail());
         neuKunde.setKonto(konto);

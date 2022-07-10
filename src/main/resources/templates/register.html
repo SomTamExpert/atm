@@ -13,7 +13,6 @@
             <img src="/images/UBS-Logo.png" width="100px" alt="UBS Logo">
         </div>
     </div>
-
     <form action="#" th:action="@{/register}"
           th:object="${kunde}" method="post" class="pt-3">
         <h3>Bitte Registrieren Sie sich</h3>
@@ -22,55 +21,66 @@
                 <div class="col-6">
                     <label for="nachname"> Nachname:</label>
                     <input type="text" class="form-control" id="nachname" th:field="*{nachname}"/>
-                </div>
+                    <b th:if="${#fields.hasErrors('nachname')}" th:errors="*{nachname}" style="color:red"/>
 
+                </div>
                 <div class="col-6">
                     <label for="vorname"> Vorname:</label>
                     <input type="text" class="form-control" id="vorname" th:field="*{vorname}"/>
+                    <b th:if="${#fields.hasErrors('vorname')}" th:errors="*{vorname}" style="color:red"/>
+
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             <div class="row">
                 <div class="col-6">
                     <label for="email"> Email:</label>
                     <input type="text" class="form-control" id="email" th:field="*{email}"/>
+                    <b th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red"/>
+
                 </div>
                 <div class="col-6">
                     <label for="tel"> Telefonnummer:</label>
                     <input type="text" class="form-control" id="tel" th:field="*{telefonnummer}"/>
+                    <b th:if="${#fields.hasErrors('telefonnummer')}" th:errors="*{telefonnummer}" style="color:red"/>
+
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             <div class="row">
                 <div class="col-6">
                     <label for="str"> Strasse-Nr:</label>
                     <input type="text" class="form-control" id="str" th:field="*{strasseNummer}"/>
+                    <b th:if="${#fields.hasErrors('strasseNummer')}" th:errors="*{strasseNummer}" style="color:red"/>
+
                 </div>
                 <div class="col-6">
                     <label for="plz"> PLZ:</label>
                     <input type="text" class="form-control" id="plz" th:field="*{plz}"/>
+                    <b th:if="${#fields.hasErrors('plz')}" th:errors="*{plz}" style="color:red"/>
+
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             <div class="row">
                 <div class="col-6">
                     <label for="ort"> Ort:</label>
                     <input type="text" class="form-control" id="ort"
                            th:field="*{ort}"/>
+                    <b th:if="${#fields.hasErrors('ort')}" th:errors="*{ort}" style="color:red"/>
+
                 </div>
                 <div class="col-6">
                     <label for="land"> Land:</label>
                     <input type="text" class="form-control" id="land" th:field="*{land}"/>
+                    <b th:if="${#fields.hasErrors('land')}" th:errors="*{land}" style="color:red"/>
+
                 </div>
             </div>
         </div>
-
         <div class="flex-row">
             <input type="submit" class="btn btn-success" value="Bestätigen"/>
         </div>

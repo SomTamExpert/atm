@@ -4,18 +4,32 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Kunde {
 
+    @NotEmpty
+    @Size(min = 2, max = 20)
     private String vorname;
+    @NotEmpty
+    @Size(min = 2, max = 20)
     private String nachname;
-    private int alter;
+    @NotEmpty
     private String strasseNummer;
-    private int plz;
+    @Pattern(regexp = "[0-9]{4}", message = "muss 4 Stellen sein")
+    private String plz;
+    @NotEmpty
     private String land;
+    @NotEmpty
     private String ort;
+    @Pattern(regexp = "^(0041|041|\\+41|\\+\\+41|41)?(0|\\(0\\))?([1-9]\\d{1})(\\d{3})(\\d{2})(\\d{2})$", message = "Bitte geben Sie eine Schweizer Telefonnummer ein!")
     private String telefonnummer;
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Verwenden Sie ein richtiges Format: xxxx@xx.xx")
     private String email;
     private Konto konto;
     private Karte karte;
@@ -36,13 +50,7 @@ public class Kunde {
         this.nachname = nachname;
     }
 
-    public int getAlter() {
-        return alter;
-    }
 
-    public void setAlter(int alter) {
-        this.alter = alter;
-    }
 
     public String getStrasseNummer() {
         return strasseNummer;
@@ -52,11 +60,11 @@ public class Kunde {
         this.strasseNummer = strasseNummer;
     }
 
-    public int getPlz() {
+    public String getPlz() {
         return plz;
     }
 
-    public void setPlz(int plz) {
+    public void setPlz(String plz) {
         this.plz = plz;
     }
 
@@ -113,7 +121,6 @@ public class Kunde {
         return "Kunde{" +
                 "vorname='" + vorname + '\'' +
                 ", nachname='" + nachname + '\'' +
-                ", alter=" + alter +
                 ", strasseNummer='" + strasseNummer + '\'' +
                 ", plz=" + plz +
                 ", land='" + land + '\'' +
