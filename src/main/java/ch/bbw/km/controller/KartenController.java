@@ -1,7 +1,9 @@
 package ch.bbw.km.controller;
 
+import ch.bbw.km.model.ApplicationCounter;
 import ch.bbw.km.model.Karte;
 import ch.bbw.km.model.Kunde;
+import ch.bbw.km.model.SessionCounter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,12 @@ public class KartenController {
 
     @Autowired
     Kunde neuKunde;
+
+    @Autowired
+    ApplicationCounter myApplicationCounter = new ApplicationCounter();
+
+    @Autowired
+    SessionCounter mySessionCounter = new SessionCounter();
 
     @GetMapping("/changepin")
     public String newPin(@ModelAttribute Karte karte, Model model) {

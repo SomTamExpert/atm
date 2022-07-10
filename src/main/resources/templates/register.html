@@ -13,123 +13,78 @@
             <img src="/images/UBS-Logo.png" width="100px" alt="UBS Logo">
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 pt-3">
-            <img src="/images/.png" width="90px" alt="withdraw money icon">
-        </div>
-    </div>
 
     <form action="#" th:action="@{/register}"
           th:object="${kunde}" method="post" class="pt-3">
         <h3>Bitte Registrieren Sie sich</h3>
         <div class="form-group">
-            <label for="nachname"> Nachname:</label>
             <div class="row">
                 <div class="col-6">
+                    <label for="nachname"> Nachname:</label>
                     <input type="text" class="form-control" id="nachname" th:field="*{nachname}"/>
                 </div>
-            </div>
-        </div>
 
-        <div class="form-group">
-            <label for="vorname"> Vorname:</label>
-            <div class="row">
                 <div class="col-6">
+                    <label for="vorname"> Vorname:</label>
                     <input type="text" class="form-control" id="vorname" th:field="*{vorname}"/>
                 </div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="email"> Email:</label>
             <div class="row">
                 <div class="col-6">
+                    <label for="email"> Email:</label>
                     <input type="text" class="form-control" id="email" th:field="*{email}"/>
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="tel"> Telefonnummer:</label>
-            <div class="row">
                 <div class="col-6">
-                    <input type="text" class="form-control" id="tel"
-                           th:field="*{telefonnummer}"/>
+                    <label for="tel"> Telefonnummer:</label>
+                    <input type="text" class="form-control" id="tel" th:field="*{telefonnummer}"/>
                 </div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="str"> Strasse-Nr:</label>
             <div class="row">
                 <div class="col-6">
-                    <input type="text" class="form-control" id="str"
-                           th:field="*{strasseNummer}"/>
+                    <label for="str"> Strasse-Nr:</label>
+                    <input type="text" class="form-control" id="str" th:field="*{strasseNummer}"/>
+                </div>
+                <div class="col-6">
+                    <label for="plz"> PLZ:</label>
+                    <input type="text" class="form-control" id="plz" th:field="*{plz}"/>
                 </div>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="plz"> PLZ:</label>
             <div class="row">
                 <div class="col-6">
-                    <input type="text" class="form-control" id="plz"
-                           th:field="*{plz}"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="ort"> Ort:</label>
-            <div class="row">
-                <div class="col-6">
+                    <label for="ort"> Ort:</label>
                     <input type="text" class="form-control" id="ort"
                            th:field="*{ort}"/>
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="land"> Land:</label>
-            <div class="row">
                 <div class="col-6">
-                    <input type="text" class="form-control"
-                           id="land"
-                           th:field="*{land}"/>
+                    <label for="land"> Land:</label>
+                    <input type="text" class="form-control" id="land" th:field="*{land}"/>
                 </div>
             </div>
         </div>
 
-        <div class="col-6">
-            <input type="submit" class="btn btn-success"
-                   value="Bestätigen"/>
+        <div class="flex-row">
+            <input type="submit" class="btn btn-success" value="Bestätigen"/>
         </div>
-
-
     </form>
-
-    <div class="row">
-        <div class="col-12">
-            <p>Bargelbezüge in</p>
+    <footer class="row">
+        <div class="col-12 pt-3">
             <p>
-                <strong>CHF</strong>
-                <span class="pl-1">50</span>
-                <span class="pl-1">100</span>
-                <span class="pl-1">200</span>
+                <a href="/">Home</a>
+                <a href="https://www.ubs.com/global/en/our-firm.html">About</a>
+                <a href="https://www.ubs.com/global/en/our-firm/locations.html">Contact</a>
             </p>
-            <p>
-                <strong>EUR</strong>
-                <span class="pl-1">50</span>
-                <span class="pl-1">100</span>
-            </p>
+            <small th:text="'ATM-Session aktiv:'+ ${surveys.countOpenSessions} + '/ Total:' + ${surveys.countOverall}"></small>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12 pt-1">
-            <p>Akzeptierte Karten</p>
-            <img src="/images/Accepted-Cards.png" width="250px" alt="accepted cards icon">
-        </div>
-    </div>
+    </footer>
 </div>
 </body>
 </html>

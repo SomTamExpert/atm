@@ -36,6 +36,11 @@
     </div>
     <div class="row">
         <div class="col-12">
+            <a href="/register">Haben Sie kein Konto? Bitte Registrieren</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 pt-5">
             <p>Bargelbezüge in</p>
             <p>
                 <strong>CHF</strong>
@@ -56,6 +61,16 @@
             <img src="/images/Accepted-Cards.png" width="250px" alt="accepted cards icon">
         </div>
     </div>
+    <footer class="row">
+        <div class="col-12 pt-3">
+            <p>
+                <a href="/">Home</a>
+                <a href="https://www.ubs.com/global/en/our-firm.html">About</a>
+                <a href="https://www.ubs.com/global/en/our-firm/locations.html">Contact</a>
+            </p>
+            <small th:text="'ATM-Session aktiv:'+ ${surveys.countOpenSessions} + '/ Total:' + ${surveys.countOverall}"></small>
+        </div>
+    </footer>
 
 </div>
 </body>

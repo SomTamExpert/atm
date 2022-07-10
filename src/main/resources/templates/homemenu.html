@@ -6,9 +6,13 @@
     <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
           rel="stylesheet"></link>
     <style>
-        a {
+        .option {
             color: black;
             font-weight: bold;
+        }
+
+        .option-box {
+            width: 220px;
         }
 
         .btn {
@@ -19,47 +23,56 @@
             border: 1px solid black;
             background: white;
             padding: 3px 8px;
-            margin-left: 15px;
-        }
 
+        }
     </style>
 </head>
 <body>
 <div class="container mx-auto flex justify-content-center my-5" style="width:600px">
     <div class="row">
-        <div class="col-12 pt-3">
+        <div class="col-12 pt-3 ">
             <img src="/images/UBS-Logo.png" width="100px" alt="UBS Logo">
         </div>
     </div>
     <div class="row">
-        <div class="col-6 pt-6">
-            <div class="row">
-                <div class="form-group pt-4">
-                    <p>Bitte gewünschte Funktion wählen</p>
-                </div>
-            </div>
+        <div class="col-12 pt-5">
+            <p>Hallo<strong th:text="' ' + ${kunde.getVorname()} + '!'"></strong><br>Bitte wähle deine gewünschte
+                Funktion
+            </p>
         </div>
-        <div class="form-group">
-
+    </div>
+    <div class=" row pt-3">
+        <div class="col-6 ">
+            <button class="option-box btn"><a class="option option d-flex justify-content-between" href="/changepin">PIN
+                Änderung <span>1</span></a></button>
+        </div>
+        <div class="col-6 ">
+            <button class="option-box btn"><a class="option option d-flex justify-content-between" href="">Bezug CHF
+                <span>3</span> </a></button>
         </div>
     </div>
     <div class="row pt-5">
-        <div class="col-6">
-            <button class="btn"><a href="/changepin">PIN Änderung <span>1</span></a></button>
+        <div class="col-6 ">
+            <button class="option-box btn"><a class="option option d-flex justify-content-between" href="">Kontoinfos
+                <span>2</span> </a></button>
         </div>
-        <div class="col-6">
-            <button class="btn"><a href="">Bezug CHF <span>3</span> </a></button>
+        <div class="col-6 ">
+            <button class="option-box btn"><a class="option d-flex justify-content-between" href="">Bezug EUR
+                <span>4</span></a>
+            </button>
         </div>
+    </div>
 
-    </div>
-    <div class="row pt-5">
-        <div class="col-6">
-            <button class="btn"><a href="" class="pr-4">Kontoinfos <span>2</span> </a></button>
+    <footer class="row">
+        <div class="col-12 pt-3">
+            <p>
+                <a href="/">Home</a>
+                <a href="https://www.ubs.com/global/en/our-firm.html">About</a>
+                <a href="https://www.ubs.com/global/en/our-firm/locations.html">Contact</a>
+            </p>
+            <small th:text="'ATM-Session aktiv:'+ ${surveys.countOpenSessions} + '/ Total:' + ${surveys.countOverall}"></small>
         </div>
-        <div class="col-6">
-            <button class="btn"><a href="">Bezug EUR <span>4</span></a></button>
-        </div>
-    </div>
+    </footer>
 </div>
 </body>
 

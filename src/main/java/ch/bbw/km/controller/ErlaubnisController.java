@@ -1,7 +1,9 @@
 package ch.bbw.km.controller;
 
+import ch.bbw.km.model.ApplicationCounter;
 import ch.bbw.km.model.Karte;
 import ch.bbw.km.model.Kunde;
+import ch.bbw.km.model.SessionCounter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +25,16 @@ public class ErlaubnisController {
     @Autowired
     Kunde neuKunde;
 
+    @Autowired
+    ApplicationCounter myApplicationCounter = new ApplicationCounter();
+
+    @Autowired
+    SessionCounter mySessionCounter = new SessionCounter();
+
     @GetMapping(value = {"/", "/login"})
     public String login(Model model, @ModelAttribute Karte karte) {
+        System.out.println(mySessionCounter);
+        model.addAttribute("surveys", myApplicationCounter);
         model.addAttribute("karte", karte);
         return "login";
     }
@@ -44,6 +54,8 @@ public class ErlaubnisController {
 
     @GetMapping("/falsecardnummber")
     public String falsecardnummber(@ModelAttribute Karte karte, Model model) {
+        System.out.println(mySessionCounter);
+        model.addAttribute("surveys", myApplicationCounter);
         model.addAttribute("karte", karte);
         return "falsecardnummber";
     }
@@ -73,6 +85,9 @@ public class ErlaubnisController {
 
     @GetMapping("/homemenu")
     public String homemenu(@ModelAttribute Karte karte, Model model) {
+        System.out.println(mySessionCounter);
+        model.addAttribute("surveys", myApplicationCounter);
+        model.addAttribute("kunde", neuKunde);
         return "homemenu";
     }
 
