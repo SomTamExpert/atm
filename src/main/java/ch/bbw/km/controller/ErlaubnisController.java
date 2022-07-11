@@ -1,9 +1,6 @@
 package ch.bbw.km.controller;
 
-import ch.bbw.km.model.ApplicationCounter;
-import ch.bbw.km.model.Karte;
-import ch.bbw.km.model.Kunde;
-import ch.bbw.km.model.SessionCounter;
+import ch.bbw.km.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +28,9 @@ public class ErlaubnisController {
     @Autowired
     SessionCounter mySessionCounter = new SessionCounter();
 
+    @Autowired
+    Login login;
+
     @GetMapping(value = {"/", "/index", "/login"})
     public String login(Model model, @ModelAttribute Karte karte) {
         System.out.println(mySessionCounter);
@@ -57,6 +57,8 @@ public class ErlaubnisController {
         System.out.println(mySessionCounter);
         model.addAttribute("surveys", myApplicationCounter);
         model.addAttribute("karte", karte);
+        model.addAttribute("attempts", login.getAttempts());
+        System.out.println("attempts: " + login.getAttempts());
         return "falsecardnummber";
     }
 
@@ -93,12 +95,12 @@ public class ErlaubnisController {
 
     @PostMapping("/falsecardnummber")
     public String verifyCardNumber(@ModelAttribute Karte karte, Model model) {
-
         try {
             System.out.println("post falsecardnummber kundenkarte nummer: " + neuKunde.getKarte().getNummer());
             if (karte.getNummer().equals(neuKunde.getKarte().getNummer())) {
                 return "redirect:/enterpin";
             }
+
         } catch (Exception err) {
             model.addAttribute("karte", karte);
             System.out.println(mySessionCounter);
@@ -110,7 +112,13 @@ public class ErlaubnisController {
 
     @GetMapping("/falsepin")
     public String falsepin(@ModelAttribute Karte karte, Model model) {
+        login.increaseAttempts();
+        if (login.getAttempts() >= 3) {
+            return "blocked";
+        }
         model.addAttribute("karte", karte);
+        model.addAttribute("login", login);
+        System.out.println(" remaining attempts: " + login.getAttempts());
         return "falsepin";
     }
 

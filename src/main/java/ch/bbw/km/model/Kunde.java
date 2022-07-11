@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -49,8 +48,6 @@ public class Kunde {
     public void setNachname(String nachname) {
         this.nachname = nachname;
     }
-
-
 
     public String getStrasseNummer() {
         return strasseNummer;
