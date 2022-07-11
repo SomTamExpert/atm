@@ -3,10 +3,47 @@
 <head>
     <title th:text="Register"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
-          rel="stylesheet"></link>
+    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != '') {
+                    window.location.replace('register?language=' + selectedOption);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/" th:text="#{home}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link active" href="https://www.ubs.com/global/en/our-firm/locations.html"
+               th:text="#{contact}"></a>
+            <a class="nav-item nav-link active" href="https://www.ubs.com/global/en/our-firm.html"
+               th:text="#{about}"></a>
+        </div>
+        <div class="nav navbar-nav ml-auto">
+            <a class="nav-item nav-link" th:text="#{lang}"></a>
+        </div>
+        <select id="locales" class="dropdown">
+            <option value=""></option>
+            <option value="en" th:text="#{lang.en}"></option>
+            <option value="de" th:text="#{lang.de}"></option>
+            <option value="fr" th:text="#{lang.fr}"></option>
+        </select>
+    </div>
+</nav>
 <div class="container mx-auto flex justify-content-center my-5" style="width:600px">
     <div class="row">
         <div class="col-12 pt-3">
@@ -15,17 +52,17 @@
     </div>
     <form action="#" th:action="@{/register}"
           th:object="${kunde}" method="post" class="pt-3">
-        <h3>Bitte Registrieren Sie sich</h3>
+        <h3 th:text="#{register_title}"></h3>
         <div class="form-group">
             <div class="row">
                 <div class="col-6">
-                    <label for="nachname"> Nachname:</label>
+                    <label for="nachname" th:text="#{last_name}"></label>
                     <input type="text" class="form-control" id="nachname" th:field="*{nachname}"/>
                     <b th:if="${#fields.hasErrors('nachname')}" th:errors="*{nachname}" style="color:red"/>
 
                 </div>
                 <div class="col-6">
-                    <label for="vorname"> Vorname:</label>
+                    <label for="vorname" th:text="#{first_name}"></label>
                     <input type="text" class="form-control" id="vorname" th:field="*{vorname}"/>
                     <b th:if="${#fields.hasErrors('vorname')}" th:errors="*{vorname}" style="color:red"/>
 
@@ -35,13 +72,13 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-6">
-                    <label for="email"> Email:</label>
+                    <label for="email" th:text="#{email}"></label>
                     <input type="text" class="form-control" id="email" th:field="*{email}"/>
                     <b th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red"/>
 
                 </div>
                 <div class="col-6">
-                    <label for="tel"> Telefonnummer:</label>
+                    <label for="tel" th:text="#{phone}"></label>
                     <input type="text" class="form-control" id="tel" th:field="*{telefonnummer}"/>
                     <b th:if="${#fields.hasErrors('telefonnummer')}" th:errors="*{telefonnummer}" style="color:red"/>
 
@@ -51,13 +88,13 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-6">
-                    <label for="str"> Strasse-Nr:</label>
+                    <label for="str" th:text="#{streetNr}"></label>
                     <input type="text" class="form-control" id="str" th:field="*{strasseNummer}"/>
                     <b th:if="${#fields.hasErrors('strasseNummer')}" th:errors="*{strasseNummer}" style="color:red"/>
 
                 </div>
                 <div class="col-6">
-                    <label for="plz"> PLZ:</label>
+                    <label for="plz" th:text="#{zip}"></label>
                     <input type="text" class="form-control" id="plz" th:field="*{plz}"/>
                     <b th:if="${#fields.hasErrors('plz')}" th:errors="*{plz}" style="color:red"/>
 
@@ -67,14 +104,14 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-6">
-                    <label for="ort"> Ort:</label>
+                    <label for="ort" th:text="#{place}"></label>
                     <input type="text" class="form-control" id="ort"
                            th:field="*{ort}"/>
                     <b th:if="${#fields.hasErrors('ort')}" th:errors="*{ort}" style="color:red"/>
 
                 </div>
                 <div class="col-6">
-                    <label for="land"> Land:</label>
+                    <label for="land" th:text="#{country}"></label>
                     <input type="text" class="form-control" id="land" th:field="*{land}"/>
                     <b th:if="${#fields.hasErrors('land')}" th:errors="*{land}" style="color:red"/>
 
@@ -82,17 +119,12 @@
             </div>
         </div>
         <div class="flex-row">
-            <input type="submit" class="btn btn-success" value="Bestätigen"/>
+            <input type="submit" class="btn btn-success" th:value="#{confirm}"/>
         </div>
     </form>
     <footer class="row">
         <div class="col-12 pt-3">
-            <p>
-                <a href="/">Home</a>
-                <a href="https://www.ubs.com/global/en/our-firm.html">About</a>
-                <a href="https://www.ubs.com/global/en/our-firm/locations.html">Contact</a>
-            </p>
-            <small th:text="'ATM-Session aktiv:'+ ${surveys.countOpenSessions} + '/ Total:' + ${surveys.countOverall}"></small>
+            <small th:text="#{active_sessions}+ ${surveys.countOpenSessions} + #{total} + ${surveys.countOverall}"></small>
         </div>
     </footer>
 </div>

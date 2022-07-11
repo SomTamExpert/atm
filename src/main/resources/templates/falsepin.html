@@ -3,10 +3,47 @@
 <head>
     <title th:text="falsepin"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"
-          rel="stylesheet"></link>
+    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != '') {
+                    window.location.replace('falsepin?language=' + selectedOption);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/" th:text="#{home}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link active" href="https://www.ubs.com/global/en/our-firm/locations.html"
+               th:text="#{contact}"></a>
+            <a class="nav-item nav-link active" href="https://www.ubs.com/global/en/our-firm.html"
+               th:text="#{about}"></a>
+        </div>
+        <div class="nav navbar-nav ml-auto">
+            <a class="nav-item nav-link" th:text="#{lang}"></a>
+        </div>
+        <select id="locales" class="dropdown">
+            <option value=""></option>
+            <option value="en" th:text="#{lang.en}"></option>
+            <option value="de" th:text="#{lang.de}"></option>
+            <option value="fr" th:text="#{lang.fr}"></option>
+        </select>
+    </div>
+</nav>
 <div class="container mx-auto flex justify-content-center my-5" style="width:600px">
     <div class="row">
         <div class="col-12 pt-3">
@@ -19,8 +56,8 @@
             <form action="#" th:action="@{/falsepin}"
                   th:object="${karte}" method="post" class="pt-3">
                 <div class="form-group">
-                    <label for="pin" style="color: red">Ihr PIN ist falsch.</label>
-                    <label for="pin"> Sie haben noch 2 Versuche </label>
+                    <label for="pin" style="color: red" th:text="#{wrong_pin}"></label>
+                    <label for="pin" th:text="#{enter_pin}"></label>
                     <div class="row">
                         <div class="col-6">
                             PIN:<input type="text" class="form-control" id="pin" th:field="*{pin}"/>
@@ -34,10 +71,10 @@
                 </div>
                 <div class="row pt-5">
                     <div class="col-6">
-                        <input type="reset" class="btn btn-warning" value="Korrigieren"/>
+                        <input type="reset" class="btn btn-warning" th:value="#{correct}"/>
                     </div>
                     <div class="col-6">
-                        <input type="submit" class="btn btn-success" value="Bestätigen"/>
+                        <input type="submit" class="btn btn-success" th:value="#{confirm}"/>
                     </div>
                 </div>
             </form>

@@ -31,12 +31,12 @@ public class ErlaubnisController {
     @Autowired
     SessionCounter mySessionCounter = new SessionCounter();
 
-    @GetMapping(value = {"/", "/login"})
+    @GetMapping(value = {"/", "/index", "/login"})
     public String login(Model model, @ModelAttribute Karte karte) {
         System.out.println(mySessionCounter);
         model.addAttribute("surveys", myApplicationCounter);
         model.addAttribute("karte", karte);
-        return "login";
+        return "index";
     }
 
     @PostMapping("/login")
@@ -101,9 +101,11 @@ public class ErlaubnisController {
             }
         } catch (Exception err) {
             model.addAttribute("karte", karte);
+            System.out.println(mySessionCounter);
+            model.addAttribute("surveys", myApplicationCounter);
             System.out.println(err);
         }
-        return "/falsecardnummber";
+        return "redirect:/falsecardnummber";
     }
 
     @GetMapping("/falsepin")

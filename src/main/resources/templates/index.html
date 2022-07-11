@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="login"></title>
+    <title th:text="start"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"></link>
     <script src="webjars/jquery/3.3.1-2/jquery.min.js"></script>
@@ -12,7 +12,7 @@
             $("#locales").change(function () {
                 var selectedOption = $('#locales').val();
                 if (selectedOption != '') {
-                    window.location.replace('login?language=' + selectedOption);
+                    window.location.replace('index?language=' + selectedOption);
                 }
             });
         });

@@ -8,7 +8,6 @@ public class AtmStartApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtmStartApplication.class, args);
-		System.out.print("hello world");
 	}
 
 }
