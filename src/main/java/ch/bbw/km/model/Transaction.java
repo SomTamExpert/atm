@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Component
 
-public class Transaktion {
+public class Transaction {
 
 
     private LocalDateTime zeitpunkt;
@@ -14,7 +14,7 @@ public class Transaktion {
     private String waehrung;
     private String transtyp;
 
-    public Transaktion() {
+    public Transaction() {
     }
 
     public LocalDateTime getZeitpunkt() {
@@ -51,7 +51,7 @@ public class Transaktion {
 
     @Override
     public String toString() {
-        return "Transaktion{" +
+        return "Transaction{" +
                 "zeitpunkt=" + zeitpunkt +
                 ", betrag=" + betrag +
                 ", waehrung='" + waehrung + '\'' +

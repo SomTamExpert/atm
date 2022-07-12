@@ -54,13 +54,13 @@
         <div class="col-12 pt-3">
             <img src="/images/Withdraw-Money.png" width="90px" alt="withdraw money icon">
             <form action="#" th:action="@{/falsecardnummber}"
-                  th:object="${karte}" method="post" class="pt-3">
+                  th:object="${card}" method="post" class="pt-3">
                 <div class="form-group">
                     <label for="cardNumber" style="color: red" th:text="#{wrong_cardnumber}"></label>
                     <label for="cardNumber" th:text="#{enter_correct_card}"></label>
                     <div class="row">
                         <div class="col-6">
-                            <input type="text" class="form-control" id="cardNumber" th:field="*{nummer}"/>
+                            <input type="text" class="form-control" id="cardNumber" th:field="*{number}"/>
                         </div>
                         <div class="col-6">
                             <input type="submit" class="btn btn-success" th:value="#{confirm}"/>

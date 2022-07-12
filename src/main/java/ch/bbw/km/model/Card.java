@@ -9,15 +9,13 @@ import java.util.Date;
 
 @Component
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class Karte {
+public class Card {
 
     private String pin;
-    private String nummer;
+    private String number;
     private String typ;
-
-    private Date gueligkeitsdatum;
+    private Date validUntil;
     private int cvc;
-
 
     public String getPin() {
         return pin;
@@ -27,12 +25,12 @@ public class Karte {
         this.pin = pin;
     }
 
-    public String getNummer() {
-        return nummer;
+    public String getNumber() {
+        return number;
     }
 
-    public void setNummer(String nummer) {
-        this.nummer = nummer;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getTyp() {
@@ -43,12 +41,12 @@ public class Karte {
         this.typ = typ;
     }
 
-    public Date getGueligkeitsdatum() {
-        return gueligkeitsdatum;
+    public Date getValidUntil() {
+        return validUntil;
     }
 
-    public void setGueligkeitsdatum(Date gueligkeitsdatum) {
-        this.gueligkeitsdatum = gueligkeitsdatum;
+    public void setValidUntil(Date validUntil) {
+        this.validUntil = validUntil;
     }
 
     public int getCvc() {
@@ -59,14 +57,13 @@ public class Karte {
         this.cvc = cvc;
     }
 
-
     @Override
     public String toString() {
-        return "Karte{" +
-                ", pin=" + pin +
-                ", nummer=" + nummer +
+        return "Card{" +
+                "pin='" + pin + '\'' +
+                ", number='" + number + '\'' +
                 ", typ='" + typ + '\'' +
-                ", gueligkeitsdatum=" + gueligkeitsdatum +
+                ", validUntil=" + validUntil +
                 ", cvc=" + cvc +
                 '}';
     }

@@ -9,10 +9,10 @@ import java.util.List;
 public class Bank {
 
     private String name;
-    private String adresse;
-    private int telefonnumer;
-    private String bankleitzahl;
-    public List<Kunde> kunden = new ArrayList<>(
+    private String address;
+    private int phoneNumber;
+    private String zipCode;
+    public List<Client> clients = new ArrayList<>(
     );
 
     public String getName() {
@@ -23,46 +23,46 @@ public class Bank {
         this.name = name;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public int getTelefonnumer() {
-        return telefonnumer;
+    public int getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setTelefonnumer(int telefonnumer) {
-        this.telefonnumer = telefonnumer;
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getBankleitzahl() {
-        return bankleitzahl;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setBankleitzahl(String bankleitzahl) {
-        this.bankleitzahl = bankleitzahl;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
-    public List<Kunde> getKunden() {
-        return kunden;
+    public List<Client> getClients() {
+        return clients;
     }
 
-    public void setKunden(List<Kunde> kunden) {
-        this.kunden = kunden;
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 
     @Override
     public String toString() {
         return "Bank{" +
                 "name='" + name + '\'' +
-                ", adresse='" + adresse + '\'' +
-                ", telefonnumer=" + telefonnumer +
-                ", bankleitzahl='" + bankleitzahl + '\'' +
-                ", kunden=" + kunden +
+                ", address='" + address + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", zipCode='" + zipCode + '\'' +
+                ", clients=" + clients +
                 '}';
     }
 }

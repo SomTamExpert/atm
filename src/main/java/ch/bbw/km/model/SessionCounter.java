@@ -13,22 +13,22 @@ import javax.annotation.PreDestroy;
 public class SessionCounter {
 
     @Autowired
-    ApplicationCounter myApplicationCounter;
+    ApplicationCounter applicationCounter;
 
     @PostConstruct
     public void setup() {
-        myApplicationCounter.incrementSession();
-        myApplicationCounter.incrementOverall();
-        System.out.println("SessionCounter.setup(); " + myApplicationCounter);
+        applicationCounter.incrementSession();
+        applicationCounter.incrementOverall();
+        System.out.println("SessionCounter.setup(); " + applicationCounter);
     }
 
     @PreDestroy
     public void shutdown() {
-        myApplicationCounter.decrementSession();
-        System.out.println("SessionCounter.shutdown(); " + myApplicationCounter);
+        applicationCounter.decrementSession();
+        System.out.println("SessionCounter.shutdown(); " + applicationCounter);
     }
     @Override
     public String toString() {
-        return "SessionCounter [myApplicationCounter=" + myApplicationCounter + "]";
+        return "SessionCounter [myApplicationCounter=" + applicationCounter + "]";
     }
 }

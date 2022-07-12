@@ -20,7 +20,8 @@ public class Login {
     public void increaseAttempts() {
         attempts++;
     }
+
     public String getRemainingAttempts() {
-        return  String.valueOf(3 - attempts);
+        return String.valueOf(3 - attempts);
     }
 }
