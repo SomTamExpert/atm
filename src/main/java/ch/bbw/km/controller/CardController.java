@@ -41,6 +41,8 @@ public class CardController {
     @GetMapping("/changepin")
     public String newPin(@ModelAttribute Card card, Model model) {
         model.addAttribute("card", card);
+        System.out.println(sessionCounter);
+        model.addAttribute("surveys", applicationCounter);
         System.out.println(" get change pin  - kundencardn nummer " + newClient.getCard().getNumber());
         return "changepin";
     }
@@ -69,6 +71,8 @@ public class CardController {
     public String confirmNewPin(@ModelAttribute Card card, Model model) {
         System.out.println("get confirm pin - kundencard nummer" + newClient.getCard().getNumber());
         model.addAttribute("card", card);
+        System.out.println(sessionCounter);
+        model.addAttribute("surveys", applicationCounter);
         return "confirmpin";
     }
 
@@ -103,6 +107,8 @@ public class CardController {
     public String falsenewpin(@ModelAttribute Card card, Model model) {
         System.out.println("get falsenewpin - kundencard nummer" + newClient.getCard().getNumber());
         model.addAttribute("card", card);
+        System.out.println(sessionCounter);
+        model.addAttribute("surveys", applicationCounter);
         return "falsenewpin";
     }
 
@@ -113,8 +119,10 @@ public class CardController {
      * @return pin changed html
      */
     @GetMapping("/pinchanged")
-    public String pinchanged(@ModelAttribute Card card) {
+    public String pinchanged(@ModelAttribute Card card, Model model) {
         System.out.println("get pinchanged - kundencard nummer" + newClient.getCard().getNumber());
+        System.out.println(sessionCounter);
+        model.addAttribute("surveys", applicationCounter);
         return "pinchanged";
     }
 

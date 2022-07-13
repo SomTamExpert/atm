@@ -5,8 +5,12 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class Account is used to store the account data of a client.
+ * @author marco karpf
+ * @version 12.07.2022
+ */
 @Component
-
 public class Account {
 
     private String typ;

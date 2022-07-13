@@ -9,53 +9,53 @@ import java.time.LocalDateTime;
 public class Transaction {
 
 
-    private LocalDateTime zeitpunkt;
-    private double betrag;
-    private String waehrung;
-    private String transtyp;
+    private LocalDateTime timestamp;
+    private double amount;
+    private String currency;
+    private String typ;
 
     public Transaction() {
     }
 
-    public LocalDateTime getZeitpunkt() {
-        return zeitpunkt;
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
 
-    public void setZeitpunkt(LocalDateTime zeitpunkt) {
-        this.zeitpunkt = zeitpunkt;
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public double getBetrag() {
-        return betrag;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setBetrag(double betrag) {
-        this.betrag = betrag;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
-    public String getWaehrung() {
-        return waehrung;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setWaehrung(String waehrung) {
-        this.waehrung = waehrung;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
-    public String getTranstyp() {
-        return transtyp;
+    public String getTyp() {
+        return typ;
     }
 
-    public void setTranstyp(String transtyp) {
-        this.transtyp = transtyp;
+    public void setTyp(String typ) {
+        this.typ = typ;
     }
 
     @Override
     public String toString() {
         return "Transaction{" +
-                "zeitpunkt=" + zeitpunkt +
-                ", betrag=" + betrag +
-                ", waehrung='" + waehrung + '\'' +
-                ", transtyp=" + transtyp +
+                "timestamp=" + timestamp +
+                ", amount=" + amount +
+                ", currency='" + currency + '\'' +
+                ", typ='" + typ + '\'' +
                 '}';
     }
 }

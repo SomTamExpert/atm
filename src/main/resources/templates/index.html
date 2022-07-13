@@ -17,9 +17,33 @@
             });
         });
     </script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
     <a class="navbar-brand" href="/" th:text="#{home}"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
@@ -34,9 +58,9 @@
                th:text="#{about}"></a>
         </div>
         <div class="nav navbar-nav ml-auto">
-            <a class="nav-item nav-link" th:text="#{lang}"></a>
+            <a class="nav-item pr-3" th:text="#{lang}" style="color: white"></a>
         </div>
-        <select id="locales" class="dropdown">
+        <select id="locales" class="dropdown custom-select col-1">
             <option value=""></option>
             <option value="en" th:text="#{lang.en}"></option>
             <option value="de" th:text="#{lang.de}"></option>
@@ -44,19 +68,19 @@
         </select>
     </div>
 </nav>
-<div class="container mx-auto flex justify-content-center my-5" style="width:600px">
+<div class="p-3">
+    <a href="/">
+        <img src="/images/UBS-Logo.png" width="150px" alt="UBS Logo">
+    </a>
+</div>
+<div class="container mx-auto my-5" style="width:600px">
     <div class="row">
         <div class="col-12 pt-3">
-            <img src="/images/UBS-Logo.png" width="100px" alt="UBS Logo">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 pt-3">
-            <img src="/images/Withdraw-Money.png" width="90px" alt="withdraw money icon">
+            <img src="/images/Withdraw-Money.png" width="120px" alt="withdraw money icon">
             <form action="#" th:action="@{/login}"
                   th:object="${card}" method="post" class="pt-3">
                 <div class="form-group">
-                    <label for="cardNumber" th:text="#{enter_card}"></label>
+                    <label for="cardNumber" th:text="#{enter_card}" style="font-size: 1.5em;"></label>
                     <div class="row">
                         <div class="col-6">
                             <input type="text" class="form-control" id="cardNumber" th:field="*{number}"/>
@@ -68,12 +92,11 @@
 
                 </div>
             </form>
-
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <a href="/register" th:text="#{register_now}"></a>
+            <a href="/register" th:text="#{register_now}" style="color: black"></a>
         </div>
     </div>
     <div class="row">
@@ -95,14 +118,20 @@
     <div class="row">
         <div class="col-12 pt-1">
             <p th:text="#{accepted_cards}"></p>
-            <img src="/images/Accepted-Cards.png" width="250px" alt="accepted cards icon">
+            <p>
+                <span><strong>Master</strong></span>
+                <span class="pl-1"><strong>Visa</strong></span>
+                <span class="pl-1"><strong>Maestro</strong></span>
+                <span class="pl-1"><strong>American Express</strong></span>
+                <span class="pl-1"><strong>Master</strong></span>
+            </p>
         </div>
     </div>
-    <footer class="row">
-        <div class="col-12 pt-3">
-            <small th:text="#{active_sessions}+ ${surveys.countOpenSessions} + #{total} + ${surveys.countOverall}"></small>
-        </div>
-    </footer>
 </div>
+<footer class="row fixed-bottom">
+    <div class="text-center  p-3" style="background-color: rgba(26,24,24,0.9); width: 100%; color: white">
+        <small th:text="#{active_sessions}+ ${surveys.countOpenSessions} + #{total} + ${surveys.countOverall}"></small>
+    </div>
+</footer>
 </body>
 </html>

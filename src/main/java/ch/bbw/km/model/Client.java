@@ -8,6 +8,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+/**
+ * Class Client is used to store details of a client.
+ * @author marco karpf
+ * @version 12.07.2022
+ */
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Client {

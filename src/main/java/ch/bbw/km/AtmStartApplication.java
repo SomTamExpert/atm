@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AtmStartApplication {
 
 	public static void main(String[] args) {
+		System.out.println("AtmStartApplication started");
 		SpringApplication.run(AtmStartApplication.class, args);
 	}
 

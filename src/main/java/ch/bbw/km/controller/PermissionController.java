@@ -33,8 +33,9 @@ public class PermissionController {
 
     /**
      * gets the index html page
+     *
      * @param model model is used to pass data to the view.
-     * @param card card is used to read the card number in form
+     * @param card  card is used to read the card number in form
      * @returns index html
      */
     @GetMapping(value = {"/", "/index", "/login"})
@@ -47,7 +48,8 @@ public class PermissionController {
 
     /**
      * handles the login of a new client.
-     * @param card card is used to read the card number in form
+     *
+     * @param card  card is used to read the card number in form
      * @param model model is used to pass data to the view.
      * @returs enter pin  or false carnd number page
      */
@@ -66,7 +68,8 @@ public class PermissionController {
 
     /**
      * gets the false card number page
-     * @param card card is used to read the card number in form
+     *
+     * @param card  card is used to read the card number in form
      * @param model model is used to pass data to the view.
      * @returns false card number page
      */
@@ -82,7 +85,8 @@ public class PermissionController {
 
     /**
      * gets the enter pin page
-     * @param card card is used to read the pin number in form
+     *
+     * @param card  card is used to read the pin number in form
      * @param model model is used to pass data to the view.
      * @returns enter pin page
      */
@@ -94,7 +98,8 @@ public class PermissionController {
 
     /**
      * cheks the pin number of the client is correct and redirects to the home menu page.
-     * @param card card is used to read the pin number in form
+     *
+     * @param card  card is used to read the pin number in form
      * @param model model is used to pass data to the view.
      * @returns either home menu page or false pin page
      */
@@ -117,6 +122,7 @@ public class PermissionController {
 
     /**
      * gets the home menu page
+     *
      * @param model model is used to pass data to the view.
      * @return home menu page
      */
@@ -130,7 +136,8 @@ public class PermissionController {
 
     /**
      * cheks the pin number of the client is correct and redirects to the home menu page.
-     * @param card card is used to read the pin number in form
+     *
+     * @param card  card is used to read the pin number in form
      * @param model model is used to pass data to the view.
      * @returns either home menu page or false pin page
      */
@@ -153,7 +160,8 @@ public class PermissionController {
 
     /**
      * gets the false pin page
-     * @param card card is used to read the pin number in form
+     *
+     * @param card  card is used to read the pin number in form
      * @param model model is used to pass data to the view.
      * @returns false pin page and blocked if client enters wrong pin at least 3 times
      */
@@ -163,6 +171,8 @@ public class PermissionController {
         if (login.getAttempts() >= 3) {
             return "blocked";
         }
+        System.out.println(sessionCounter);
+        model.addAttribute("surveys", applicationCounter);
         model.addAttribute("card", card);
         model.addAttribute("login", login);
         System.out.println(" remaining attempts: " + login.getAttempts());
@@ -171,19 +181,24 @@ public class PermissionController {
 
     /**
      * cheks the pin number of the client is correct and redirects to the home menu page.
+     *
      * @param card card is used to read the pin number in form
      * @returns either home menu page or false pin page
      */
     @PostMapping("/falsepin")
-    public String verifyCustomerAgain(@ModelAttribute Card card) {
+    public String verifyCustomerAgain(@ModelAttribute Card card, Model model) {
         try {
             if (card.getPin().equals(newClient.getCard().getPin())) {
                 System.out.println("enter pin controller - clientncardn nummer: " + newClient.getCard().getNumber());
+                System.out.println(sessionCounter);
+                model.addAttribute("surveys", applicationCounter);
                 return "redirect:/homemenu";
             }
         } catch (Exception err) {
             System.out.println(err);
         }
+        System.out.println(sessionCounter);
+        model.addAttribute("surveys", applicationCounter);
         return "redirect:/falsepin";
     }
 

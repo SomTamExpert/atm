@@ -8,6 +8,11 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+/**
+ * Class ApplicationCounter is used to start and close a session and de-/increases number of open and overall sessions.
+ * @author marco karpf
+ * @version 12.07.2022
+ */
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SessionCounter {

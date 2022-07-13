@@ -6,7 +6,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-
+/**
+ * Class Card is used to store the card data of a client.
+ * @author marco karpf
+ * @version 12.07.2022
+ */
 @Component
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Card {

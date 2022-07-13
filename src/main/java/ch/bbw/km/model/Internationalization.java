@@ -9,7 +9,11 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import java.util.Locale;
-
+/**
+ * Class Internationalization is used to resolve the locale of the user.
+ * @author marco karpf
+ * @version 12.07.2022
+ */
 @Configuration
 public class Internationalization implements WebMvcConfigurer {
     @Bean

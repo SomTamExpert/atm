@@ -5,6 +5,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class Bank is used to provide all banking services to the client
+ * @author marco karpf
+ * @version 12.07.2022
+ */
 @Service
 public class Bank {
 

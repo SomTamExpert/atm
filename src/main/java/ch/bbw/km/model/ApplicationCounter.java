@@ -3,6 +3,11 @@ package ch.bbw.km.model;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+/**
+ * Class ApplicationCounter is used count number of open and overall sessions.
+ * @author marco karpf
+ * @version 12.07.2022
+ */
 @Component
 @Scope(value = "singleton")
 public class ApplicationCounter {
